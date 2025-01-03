@@ -57,7 +57,7 @@
         cnstr: cnstr {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LPAR &kp RPAR &kp LEFT_BRACE &kp RBRC>;
+            bindings = <&kp LPAR &kp RPAR &kp LEFT_BRACE &kp RBRC &kp LEFT &kp LEFT &kp LEFT>;
             label = "CNSTR";
         };
 
