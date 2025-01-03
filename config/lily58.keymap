@@ -13,8 +13,31 @@
         arrow_func: arrow_func {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&none &kp EQUAL &kp LPAR &kp RPAR &kp EQUAL &kp GT &kp RBKT &kp RBRC>;
+            bindings = <&kp LEFT_PARENTHESIS &kp RIGHT_PARENTHESIS &kp EQUAL &kp GREATER_THAN &kp LEFT_BRACE &kp RIGHT_BRACE>;
             label = "ARROW_FUNC";
+        };
+
+        clg: clg {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp C &kp O &kp N &kp S &kp O &kp L &kp E &kp DOT &kp L &kp O &kp G &kp LPAR &kp SQT &kp SQT &kp RPAR>;
+            label = "CLG";
+        };
+
+        arr_decl: arr_decl {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp EQUAL &kp LBKT &kp RIGHT_BRACKET &kp SEMI>;
+            label = "ARR_DECL";
+        };
+
+        full_screen: full_screen {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LCTRL &kp LCMD &kp F>;
+            label = "FULL_SCREEN";
+            wait-ms = <0>;
+            tap-ms = <0>;
         };
     };
 
@@ -49,7 +72,7 @@
             //                       |      |      |      |        |  |       |      |       |       |
 
             bindings = <
-&trans     &kp C_BRI_DN  &kp C_BRI_UP  &kp C_MUTE  &kp C_VOL_DN  &kp C_VOL_UP                    &arrow_func  &trans     &trans           &trans    &trans    &trans
+&trans     &kp C_BRI_DN  &kp C_BRI_UP  &kp C_MUTE  &kp C_VOL_DN  &kp C_VOL_UP                    &arrow_func  &clg       &arr_decl        &trans    &trans    &trans
 &kp F1     &kp F2        &kp F3        &kp F4      &kp F5        &kp F6                          &kp F7       &kp F8     &kp F9           &kp F10   &kp F11   &kp F12
 &kp GRAVE  &kp EXCL      &kp AT        &kp HASH    &kp DOLLAR    &kp PRCNT                       &kp CARET    &kp AMPS   &kp KP_MULTIPLY  &kp LPAR  &kp RPAR  &kp TILDE
 &trans     &trans        &trans        &trans      &trans        &trans        &trans    &trans  &trans       &kp MINUS  &kp KP_PLUS      &kp LBRC  &kp RBRC  &kp PIPE
