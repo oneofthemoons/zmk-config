@@ -5,7 +5,6 @@
  */
 
 #include <behaviors.dtsi>
-#include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 
 / {
@@ -60,6 +59,20 @@
             bindings = <&kp LPAR &kp RPAR &kp LEFT_BRACE &kp RBRC &kp LEFT &kp LEFT &kp LEFT>;
             label = "CNSTR";
         };
+
+        left_dskp: left_dskp {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LC(LEFT)>;
+            label = "LEFT_DSKP";
+        };
+
+        right_dskp: right_dskp {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LC(RIGHT)>;
+            label = "RIGHT_DSKP";
+        };
     };
 
     keymap {
@@ -112,11 +125,11 @@
             //                     |      |      |      |        |  |       |      |       |       |
 
             bindings = <
-&full_screen  &trans  &cnstr  &arr_decl  &clg      &arrow_func                        &bt BT_CLR   &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2      &bt BT_SEL 3       &bt BT_SEL 4
-&trans        &trans  &trans  &trans     &kp HOME  &kp PAGE_UP                        &trans       &trans        &trans        &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp GRAVE
-&kp CAPSLOCK  &trans  &trans  &trans     &kp END   &kp PAGE_DOWN                      &trans       &kp LEFT      &kp DOWN      &kp UP            &kp RIGHT          &trans
-&trans        &trans  &trans  &trans     &trans    &trans         &none     &t_right  &kp KP_PLUS  &kp MINUS     &kp EQUAL     &kp LBKT          &kp RBKT           &kp BSLH
-                              &trans     &trans    &trans         &trans    &trans    &trans       &trans        &trans
+&full_screen  &trans  &cnstr  &arr_decl  &clg      &arrow_func                        &none        &none       &none        &none             &none              &none
+&trans        &trans  &trans  &trans     &kp HOME  &kp PAGE_UP                        &trans       &left_dskp  &right_dskp  &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp GRAVE
+&kp CAPSLOCK  &trans  &trans  &trans     &kp END   &kp PAGE_DOWN                      &trans       &kp LEFT    &kp DOWN     &kp UP            &kp RIGHT          &trans
+&trans        &trans  &trans  &trans     &trans    &trans         &none     &t_right  &kp KP_PLUS  &kp MINUS   &kp EQUAL    &kp LBKT          &kp RBKT           &kp BSLH
+                              &trans     &trans    &trans         &trans    &trans    &trans       &trans      &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
