@@ -19,7 +19,7 @@
         clg: clg {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp C &kp O &kp N &kp S &kp O &kp L &kp E &kp DOT &kp L &kp O &kp G &kp LPAR &kp SQT &kp EQUAL &kp EQUAL &kp EQUAL &kp GT &kp SQT &kp RPAR &kp LG(LEFT)>;
+            bindings = <&kp C &kp O &kp N &kp S &kp O &kp L &kp E &kp DOT &kp L &kp O &kp G &kp LPAR &kp SQT &kp EQUAL &kp EQUAL &kp EQUAL &kp GT &kp SQT &kp RPAR &kp LEFT>;
             label = "CLG";
         };
 
@@ -73,6 +73,13 @@
             bindings = <&kp LC(RIGHT)>;
             label = "RIGHT_DSKP";
         };
+
+        c_lang: c_lang {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LG(ENTER)>;
+            label = "C_LANG";
+        };
     };
 
     keymap {
@@ -110,7 +117,7 @@
 &kp F1     &kp F2        &kp F3        &kp F4      &kp F5        &kp F6                           &kp F7     &kp F8     &kp F9           &kp F10   &kp F11   &kp F12
 &kp GRAVE  &kp EXCL      &kp AT        &kp HASH    &kp DOLLAR    &kp PRCNT                        &kp CARET  &kp AMPS   &kp KP_MULTIPLY  &kp LPAR  &kp RPAR  &kp TILDE
 &trans     &trans        &trans        &trans      &trans        &trans        &t_left    &trans  &trans     &kp MINUS  &kp KP_PLUS      &kp LBRC  &kp RBRC  &kp PIPE
-                                       &trans      &trans        &trans        &trans     &trans  &trans     &trans     &trans
+                                       &trans      &trans        &trans        &c_lang    &trans  &trans     &trans     &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
@@ -125,11 +132,11 @@
             //                     |      |      |      |        |  |       |      |       |       |
 
             bindings = <
-&full_screen  &trans  &cnstr  &arr_decl  &clg      &arrow_func                        &none        &none       &none        &none             &none              &none
-&trans        &trans  &trans  &trans     &kp HOME  &kp PAGE_UP                        &trans       &left_dskp  &right_dskp  &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp GRAVE
-&kp CAPSLOCK  &trans  &trans  &trans     &kp END   &kp PAGE_DOWN                      &trans       &kp LEFT    &kp DOWN     &kp UP            &kp RIGHT          &trans
-&trans        &trans  &trans  &trans     &trans    &trans         &none     &t_right  &kp KP_PLUS  &kp MINUS   &kp EQUAL    &kp LBKT          &kp RBKT           &kp BSLH
-                              &trans     &trans    &trans         &trans    &trans    &trans       &trans      &trans
+&full_screen  &trans  &cnstr  &arr_decl  &clg      &arrow_func                         &none        &none       &none        &none             &none              &none
+&trans        &trans  &trans  &trans     &kp HOME  &kp PAGE_UP                         &trans       &left_dskp  &right_dskp  &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp GRAVE
+&kp CAPSLOCK  &trans  &trans  &trans     &kp END   &kp PAGE_DOWN                       &trans       &kp LEFT    &kp DOWN     &kp UP            &kp RIGHT          &trans
+&trans        &trans  &trans  &trans     &trans    &trans         &t_left    &t_right  &kp KP_PLUS  &kp MINUS   &kp EQUAL    &kp LBKT          &kp RBKT           &kp BSLH
+                              &trans     &trans    &trans         &trans     &trans    &trans       &trans      &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
