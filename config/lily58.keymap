@@ -1,97 +1,77 @@
+/*
+ * Copyright (c) 2020 The ZMK Contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/ext_power.h>
 #include <dt-bindings/zmk/keys.h>
 
 / {
-  keymap {
-    compatible = "zmk,keymap";
+    keymap {
+        compatible = "zmk,keymap";
 
-    /* =========================
-     * L0: BASE (3x6 per side)
-     * ========================= */
-    base {
-      bindings = <
-        /* Row 1 */
-        &kp TAB   &kp Q     &kp W     &kp E     &kp R     &kp T        &kp Y     &kp U     &kp I     &kp O     &kp P     &kp MINUS
+        default_layer {
+            // ------------------------------------------------------------------------------------------------------------
+            // |  ESC  |  1  |  2  |  3   |  4   |  5   |                   |  6   |  7    |  8    |  9   |   0   |   `   |
+            // |  TAB  |  Q  |  W  |  E   |  R   |  T   |                   |  Y   |  U    |  I    |  O   |   P   |   -   |
+            // |  CTRL |  A  |  S  |  D   |  F   |  G   |                   |  H   |  J    |  K    |  L   |   ;   |   '   |
+            // | SHIFT |  Z  |  X  |  C   |  V   |  B   |   "["  |  |  "]"  |  N   |  M    |  ,    |  .   |   /   | SHIFT |
+            //                     | ALT  | GUI  | LOWER|  SPACE |  | ENTER | RAISE| BSPC  | GUI   |
 
-        /* Row 2 */
-        &kp LCTRL &kp A     &kp S     &kp D     &kp F     &kp G        &kp H     &kp J     &kp K     &kp L     &kp SEMI  &kp SQT
+            bindings = <
+&trans     &trans  &trans  &trans    &trans    &trans                         &trans  &trans    &trans     &trans   &trans    &trans
+&kp TAB    &kp Q   &kp W   &kp E     &kp R     &kp T                          &kp Y   &kp U     &kp I      &kp O    &kp P     &kp MINUS
+&kp LCTRL  &kp A   &kp S   &kp D     &kp F     &kp G                          &kp H   &kp J     &kp K      &kp L    &kp SEMI  &kp SQT
+&kp LSHFT  &kp Z   &kp X   &kp C     &kp V     &kp B   &kp LBKT     &kp RBKT  &kp N   &kp M     &kp COMMA  &kp DOT  &kp FSLH  &kp RSHFT
+                           &kp LALT  &kp LGUI  &mo 1   &kp SPACE    &kp RET   &mo 2   &kp BSPC  &kp RGUI
+            >;
 
-        /* Row 3 (оставил твою фишку: [ ] между B и N) */
-        &kp LSHFT &kp Z     &kp X     &kp C     &kp V     &kp B        &kp LBKT  &kp RBKT  &kp N     &kp M     &kp COMMA &kp DOT
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+        };
 
-        /* Thumbs (4 + 4)
-           - Esc удобно получить с Mod-Tap (держишь = GUI, тап = Esc)
-           - Del удобно получить с Mod-Tap на правом большом пальце (держишь = RGUI, тап = Del)
-           - Space/Enter одновременно включают слои (Layer-Tap)
-        */
-                          &kp LALT   &mt LGUI ESC  &mo 3       &lt 1 SPACE
-                          &lt 2 RET   &mo 3         &kp BSPC    &mt RGUI DEL
-      >;
+        lower_layer {
+            bindings = <
+                /* phantom row (у тебя нет верхнего ряда) */
+                &trans    &trans  &trans  &trans  &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
+
+                /* row 1: numbers (запоминается как "числовой ряд") */
+                &kp N1    &kp N2  &kp N3  &kp N4  &kp N5  &kp N6                    &kp N7  &kp N8  &kp N9  &kp N0  &kp MINUS &kp EQUAL
+
+                /* row 2: shifted numbers (символы с цифр) */
+                &kp EXCL  &kp AT  &kp HASH &kp DOLLAR &kp PRCNT &kp CARET            &kp AMPS &kp ASTRK &kp LPAR &kp RPAR &trans     &trans
+
+                /* row 3: "кодерский пакет" */
+                &kp GRAVE &kp TILDE &kp BSLH &kp PIPE &kp LBRC &kp RBRC              &kp LBKT &kp RBKT &kp SQT  &trans   &trans     &trans
+
+                                    /* thumbs оставляем как у тебя */
+                                    &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+        };
+
+        raise_layer {
+            bindings = <
+                /* phantom row */
+                &trans     &trans   &trans   &trans   &trans   &trans                 &trans   &trans   &trans   &trans   &trans   &trans
+
+                /* row 1: page/home/end */
+                &kp ESC    &kp HOME &kp PG_UP &kp END  &kp PG_DN &trans               &trans   &kp HOME &kp PG_DN &kp PG_UP &kp END  &trans
+
+                /* row 2: стрелки на правой руке (H J K L зона) */
+                &trans     &trans   &trans   &trans   &trans   &trans                 &kp LEFT &kp DOWN &kp UP   &kp RIGHT &trans   &trans
+
+                /* row 3: delete/backspace рядом (если удобно — можешь поменять местами) */
+                &trans     &trans   &trans   &trans   &trans   &trans                 &kp DEL  &kp BSPC &trans   &trans    &trans   &trans
+
+                                    /* thumbs оставляем как у тебя */
+                                    &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+        };
     };
-
-    /* =========================
-     * L1: SYM/NUM (цифры + символы для кода)
-     * регулярная сетка, чтобы выучить раз и навсегда
-     * ========================= */
-    sym {
-      bindings = <
-        /* Row 1: numbers */
-        &kp N1    &kp N2    &kp N3    &kp N4    &kp N5    &kp N6       &kp N7    &kp N8    &kp N9    &kp N0    &kp MINUS &kp EQUAL
-
-        /* Row 2: shifted numbers */
-        &kp EXCL  &kp AT    &kp HASH  &kp DOLLAR &kp PRCNT &kp CARET    &kp AMPS  &kp ASTRK &kp LPAR  &kp RPAR  &kp UNDER &kp PLUS
-
-        /* Row 3: brackets / slashes / quotes pack */
-        &kp GRAVE &kp TILDE &kp BSLH  &kp PIPE  &kp LBRC  &kp RBRC     &kp LBKT  &kp RBKT  &kp SQT   &kp DQT   &trans    &trans
-
-        /* Thumbs: обычно оставляем как на базе */
-                          &trans     &trans      &trans      &trans
-                          &trans     &trans      &trans      &trans
-      >;
-    };
-
-    /* =========================
-     * L2: NAV/EDIT (для браузера/ОС/IDE)
-     * ========================= */
-    nav {
-      bindings = <
-        /* Row 1: paging */
-        &kp ESC   &kp HOME  &kp UP    &kp END   &kp PG_UP &kp PG_DN     &kp INS   &kp DEL   &kp PG_UP &kp PG_DN &kp HOME  &kp END
-
-        /* Row 2: arrows (vim-friendly на правой руке) */
-        &trans    &trans    &trans    &trans    &trans    &trans        &kp LEFT  &kp DOWN  &kp UP    &kp RIGHT &trans    &trans
-
-        /* Row 3: optional (можно добавить что-то типа App/Menu или оставить пустым) */
-        &trans    &trans    &trans    &trans    &trans    &trans        &trans    &trans    &trans    &trans    &trans    &trans
-
-        /* Thumbs: обычно оставляем как на базе */
-                          &trans     &trans      &trans      &trans
-                          &trans     &trans      &trans      &trans
-      >;
-    };
-
-    /* =========================
-     * L3: ADJUST (редкое/опасное: BT + питание)
-     * ========================= */
-    adjust {
-      bindings = <
-        /* Row 1: BT profiles */
-        &bt BT_CLR   &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4
-                     &trans        &trans        &trans        &trans        &trans        &trans
-
-        /* Row 2: power */
-        &ext_power EP_ON  &ext_power EP_OFF &ext_power EP_TOG &trans &trans &trans
-                          &trans            &trans            &trans &trans &trans &trans
-
-        /* Row 3: F-keys (если нужны редко — можно сюда) */
-        &kp F1  &kp F2  &kp F3  &kp F4  &kp F5  &kp F6        &kp F7  &kp F8  &kp F9  &kp F10 &kp F11 &kp F12
-
-        /* Thumbs */
-                          &trans  &trans  &trans  &trans
-                          &trans  &trans  &trans  &trans
-      >;
-    };
-  };
 };
