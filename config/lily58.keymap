@@ -14,13 +14,6 @@
         compatible = "zmk,keymap";
 
         default_layer {
-            // ------------------------------------------------------------------------------------------------------------
-            // |  ESC  |  1  |  2  |  3   |  4   |  5   |                   |  6   |  7    |  8    |  9   |   0   |   `   |
-            // |  TAB  |  Q  |  W  |  E   |  R   |  T   |                   |  Y   |  U    |  I    |  O   |   P   |   -   |
-            // |  CTRL |  A  |  S  |  D   |  F   |  G   |                   |  H   |  J    |  K    |  L   |   ;   |   '   |
-            // | SHIFT |  Z  |  X  |  C   |  V   |  B   |   "["  |  |  "]"  |  N   |  M    |  ,    |  .   |   /   | SHIFT |
-            //                     | ALT  | GUI  | LOWER|  SPACE |  | ENTER | RAISE| BSPC  | GUI   |
-
             bindings = <
 &trans     &trans  &trans  &trans    &trans    &trans                         &trans  &trans    &trans     &trans   &trans    &trans
 &kp TAB    &kp Q   &kp W   &kp E     &kp R     &kp T                          &kp Y   &kp U     &kp I      &kp O    &kp P     &kp MINUS
@@ -34,20 +27,20 @@
 
         lower_layer {
             bindings = <
-                /* phantom row (у тебя нет верхнего ряда) */
-                &trans    &trans  &trans  &trans  &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
+/* phantom row (у тебя нет верхнего ряда) */
+&trans     &trans  &trans  &trans    &trans    &trans                         &trans  &trans    &trans     &trans   &trans    &trans
 
-                /* row 1: numbers (запоминается как "числовой ряд") */
-                &kp N1    &kp N2  &kp N3  &kp N4  &kp N5  &kp N6                    &kp N7  &kp N8  &kp N9  &kp N0  &kp MINUS &kp EQUAL
+/* row 1: numbers */
+&kp N1     &kp N2  &kp N3  &kp N4    &kp N5    &kp N6                          &kp N7  &kp N8    &kp N9     &kp N0   &kp MINUS &kp EQUAL
 
-                /* row 2: shifted numbers (символы с цифр) */
-                &kp EXCL  &kp AT  &kp HASH &kp DOLLAR &kp PRCNT &kp CARET            &kp AMPS &kp ASTRK &kp LPAR &kp RPAR &trans     &trans
+/* row 2: shifted numbers */
+&kp EXCL   &kp AT  &kp HASH &kp DOLLAR &kp PRCNT &kp CARET                      &kp AMPS &kp ASTRK &kp LPAR   &kp RPAR &trans    &trans
 
-                /* row 3: "кодерский пакет" */
-                &kp GRAVE &kp TILDE &kp BSLH &kp PIPE &kp LBRC &kp RBRC              &kp LBKT &kp RBKT &kp SQT  &trans   &trans     &trans
+/* row 3: "кодерский пакет" (ВАЖНО: добавили 2 центральных позиции как в default_layer) */
+&kp GRAVE  &kp TILDE &kp BSLH &kp PIPE &kp LBRC &kp RBRC     &trans    &trans   &kp LBKT &kp RBKT &kp SQT    &trans   &trans    &trans
 
-                                    /* thumbs оставляем как у тебя */
-                                    &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans
+                           /* thumbs оставляем как у тебя */
+                           &trans     &trans  &trans  &trans    &trans  &trans  &trans  &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
@@ -55,20 +48,20 @@
 
         raise_layer {
             bindings = <
-                /* phantom row */
-                &trans     &trans   &trans   &trans   &trans   &trans                 &trans   &trans   &trans   &trans   &trans   &trans
+/* phantom row */
+&trans     &trans  &trans  &trans    &trans    &trans                         &trans  &trans    &trans     &trans   &trans    &trans
 
-                /* row 1: page/home/end */
-                &kp ESC    &kp HOME &kp PG_UP &kp END  &kp PG_DN &trans               &trans   &kp HOME &kp PG_DN &kp PG_UP &kp END  &trans
+/* row 1: page/home/end */
+&kp ESC    &kp HOME &kp PG_UP &kp END &kp PG_DN &trans                         &trans  &kp HOME  &kp PG_DN   &kp PG_UP &kp END  &trans
 
-                /* row 2: стрелки на правой руке (H J K L зона) */
-                &trans     &trans   &trans   &trans   &trans   &trans                 &kp LEFT &kp DOWN &kp UP   &kp RIGHT &trans   &trans
+/* row 2: arrows */
+&trans     &trans  &trans  &trans    &trans    &trans                         &kp LEFT &kp DOWN  &kp UP      &kp RIGHT &trans   &trans
 
-                /* row 3: delete/backspace рядом (если удобно — можешь поменять местами) */
-                &trans     &trans   &trans   &trans   &trans   &trans                 &kp DEL  &kp BSPC &trans &bt BT_SEL 0  &bt BT_SEL 1 &bt BT_CLR
+/* row 3: delete/backspace + BT (ВАЖНО: добавили 2 центральных позиции как в default_layer) */
+&trans     &trans  &trans  &trans    &trans    &trans     &trans    &trans     &kp DEL  &kp BSPC  &trans      &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_CLR
 
-                                    /* thumbs оставляем как у тебя */
-                                    &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans
+                           /* thumbs оставляем как у тебя */
+                           &trans     &trans  &trans  &trans    &trans  &trans  &trans  &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
