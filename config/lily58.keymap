@@ -65,7 +65,7 @@
                 &trans     &trans   &trans   &trans   &trans   &trans                 &kp LEFT &kp DOWN &kp UP   &kp RIGHT &trans   &trans
 
                 /* row 3: delete/backspace рядом (если удобно — можешь поменять местами) */
-                &trans     &trans   &trans   &trans   &trans   &trans                 &kp DEL  &kp BSPC &trans   &trans    &trans   &trans
+                &trans     &trans   &trans   &trans   &trans   &trans                 &kp DEL  &kp BSPC &trans &bt BT_SEL 0  &bt BT_SEL 1 &bt BT_CLR
 
                                     /* thumbs оставляем как у тебя */
                                     &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans
