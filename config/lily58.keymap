@@ -29,7 +29,7 @@
             >;
         };
 
-        lower_layer {
+        nav_layer {
             // --------------------------------------------------------------------------------------------------------------
             // | LPAD  | BRDn | BRUp |  MUT |  Vo- |  Vo+ |                   |      |       |       |      |       |       |
             // |  F1   |  F2  |  F3  |  F4  |  F5  |  F6  |                   |  F7  |  F8   |  F9   |  F10 |  F11  |  F12  |
@@ -38,14 +38,12 @@
             //                       |      |      |      |        |  |       |      |       |       |
 
             bindings = <
-&trans     &kp C_BRI_DN  &kp C_BRI_UP  &kp C_MUTE  &kp C_VOL_DN  &kp C_VOL_UP                    &trans     &trans     &trans           &trans    &trans    &trans
-&kp F1     &kp F2        &kp F3        &kp F4      &kp F5        &kp F6                          &kp F7     &kp F8     &kp F9           &kp F10   &kp F11   &kp F12
-&kp GRAVE  &kp EXCL      &kp AT        &kp HASH    &kp DOLLAR    &kp PRCNT                       &kp CARET  &kp AMPS   &kp KP_MULTIPLY  &kp LPAR  &kp RPAR  &kp TILDE
-&trans     &trans        &trans        &trans      &trans        &trans        &trans    &trans  &trans     &kp MINUS  &kp KP_PLUS      &kp LBRC  &kp RBRC  &kp PIPE
-                                       &trans      &trans        &trans        &trans    &trans  &trans     &trans     &trans
+&kp F1          &kp F2  &kp F3  &kp F4     &kp F5    &kp F6                  &kp F7          &kp F8              &kp F9            &kp F10              &kp F11        &kp F12
+&kp TAB         &none   &none   &none      &none     &none                   &kp LC(LEFT)    &kp LC(DOWN_ARROW)  &kp LC(UP_ARROW)  &kp LC(RIGHT_ARROW)  &kp PAGE_UP    &kp PRINTSCREEN
+&kp LGUI        &none   &none   &none      &none     &none                   &kp LEFT_ARROW  &kp DOWN_ARROW      &kp UP_ARROW      &kp RIGHT            &mt HOME END   &kp INSERT
+&kp LEFT_SHIFT  &none   &none   &none      &none     &none   &none    &sl 2  &kp LA(LEFT)    &kp LA(DOWN_ARROW)  &kp LA(UP_ARROW)  &kp LA(RIGHT_ARROW)  &kp PAGE_DOWN  &kp LEFT_SHIFT
+                                &kp LCTRL  &kp LALT  &none   &none    &none  &none           &kp DELETE          &kp BACKSPACE
             >;
-
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
         raise_layer {
