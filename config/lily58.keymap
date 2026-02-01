@@ -46,7 +46,7 @@
             >;
         };
 
-        raise_layer {
+        sys_layer {
             // ------------------------------------------------------------------------------------------------------------
             // |       |     |     |      |      |      |                   |      |       |       |      |       |       |
             // |   `   |  1  |  2  |  3   |  4   |  5   |                   |  6   |   7   |   8   |  9   |   0   |       |
@@ -55,14 +55,12 @@
             //                     |      |      |      |        |  |       |      |       |       |
 
             bindings = <
-&studio_unlock  &trans  &trans  &trans  &trans  &trans                    &bt BT_CLR   &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4
-&trans          &trans  &trans  &trans  &trans  &trans                    &kp N6       &kp N7        &kp N8        &kp N9        &kp N0        &trans
-&trans          &trans  &trans  &trans  &trans  &trans                    &trans       &kp LEFT      &kp DOWN      &kp UP        &kp RIGHT     &trans
-&trans          &trans  &trans  &trans  &trans  &trans  &trans    &trans  &kp KP_PLUS  &kp MINUS     &kp EQUAL     &kp LBKT      &kp RBKT      &kp BSLH
-                                &trans  &trans  &trans  &trans    &trans  &trans       &trans        &trans
+&to 0       &bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2   &bt BT_SEL 3   &bt BT_SEL 4                   &none  &none  &none  &none  &none  &studio_unlock
+&bt BT_CLR  &bt BT_DISC 0  &bt BT_DISC 1  &bt BT_DISC 2  &bt BT_DISC 3  &bt BT_DISC 4                  &none  &none  &none  &none  &none  &none
+&none       &none          &none          &none          &none          &none                          &none  &none  &none  &none  &none  &none
+&none       &none          &none          &none          &none          &none          &none    &none  &none  &none  &none  &none  &none  &none
+                                          &none          &none          &none          &none    &none  &none  &none  &none
             >;
-
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
     };
 };
