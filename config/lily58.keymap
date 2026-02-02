@@ -10,17 +10,6 @@
 #include <dt-bindings/zmk/pointing.h>
 
 / {
-    behaviors {
-        nav_entry: nav_entry {
-            compatible = "zmk,behavior-hold-tap";
-            label = "NAV_ENTRY";
-            bindings = <&mo>, <&to>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-        };
-    };
-
     keymap {
         compatible = "zmk,keymap";
 
@@ -33,11 +22,11 @@
             //                     | ALT  | GUI  | LOWER|  SPACE |  | ENTER | RAISE| BSPC  | GUI   |
 
             bindings = <
-&kp GRAVE     &kp N1  &kp N2  &kp N3            &kp N4    &kp N5                                             &kp N6               &kp N7      &kp N8         &kp N9   &kp N0    &kp BACKSLASH
-&kp TAB       &kp Q   &kp W   &kp E             &kp R     &kp T                                              &kp Y                &kp U       &kp I          &kp O    &kp P     &mt RIGHT_BRACKET LEFT_BRACKET
-&kp LEFT_GUI  &kp A   &kp S   &kp D             &kp F     &kp G                                              &kp H                &kp J       &kp K          &kp L    &kp SEMI  &kp SQT
-&kp LSHFT     &kp Z   &kp X   &kp C             &kp V     &kp B                &nav_entry 1 1    &kp ESCAPE  &kp N                &kp M       &kp COMMA      &kp DOT  &kp FSLH  &kp LEFT_SHIFT
-                              &kp LEFT_CONTROL  &kp LALT  &mt MINUS LS(MINUS)  &kp SPACE         &kp RET     &mt LS(EQUAL) EQUAL  &kp DELETE  &kp BACKSPACE
+&kp GRAVE     &kp N1  &kp N2  &kp N3            &kp N4    &kp N5                                        &kp N6               &kp N7      &kp N8         &kp N9   &kp N0    &kp BACKSLASH
+&kp TAB       &kp Q   &kp W   &kp E             &kp R     &kp T                                         &kp Y                &kp U       &kp I          &kp O    &kp P     &mt RIGHT_BRACKET LEFT_BRACKET
+&kp LEFT_GUI  &kp A   &kp S   &kp D             &kp F     &kp G                                         &kp H                &kp J       &kp K          &kp L    &kp SEMI  &kp SQT
+&kp LSHFT     &kp Z   &kp X   &kp C             &kp V     &kp B                &sl 1        &kp ESCAPE  &kp N                &kp M       &kp COMMA      &kp DOT  &kp FSLH  &kp LEFT_SHIFT
+                              &kp LEFT_CONTROL  &kp LALT  &mt MINUS LS(MINUS)  &kp SPACE    &kp RET     &mt LS(EQUAL) EQUAL  &kp DELETE  &kp BACKSPACE
             >;
         };
 
@@ -53,7 +42,7 @@
 &kp F1          &kp F2  &kp F3  &kp F4          &kp F5          &kp F6                                 &kp F7          &kp F8              &kp F9            &kp F10              &kp F11        &kp F12
 &kp TAB         &none   &none   &msc SCRL_UP    &mmv MOVE_UP    &mkp RCLK                              &kp LC(LEFT)    &kp LC(DOWN_ARROW)  &kp LC(UP_ARROW)  &kp LC(RIGHT_ARROW)  &kp PAGE_UP    &kp PRINTSCREEN
 &kp LGUI        &none   &none   &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT                        &kp LEFT_ARROW  &kp DOWN_ARROW      &kp UP_ARROW      &kp RIGHT            &mt HOME END   &kp INSERT
-&kp LEFT_SHIFT  &none   &none   &msc SCRL_DOWN  &mmv MOVE_DOWN  &mkp MCLK        &to 0       &sl 2     &kp LA(LEFT)    &kp LA(DOWN_ARROW)  &kp LA(UP_ARROW)  &kp LA(RIGHT_ARROW)  &kp PAGE_DOWN  &kp LEFT_SHIFT
+&kp LEFT_SHIFT  &none   &none   &msc SCRL_DOWN  &mmv MOVE_DOWN  &mkp MCLK        &to 1       &sl 2     &kp LA(LEFT)    &kp LA(DOWN_ARROW)  &kp LA(UP_ARROW)  &kp LA(RIGHT_ARROW)  &kp PAGE_DOWN  &kp LEFT_SHIFT
                                 &kp LCTRL       &kp LALT        &none            &mkp MB4    &mkp MB5  &none           &kp DELETE          &kp BACKSPACE
             >;
         };
@@ -67,8 +56,8 @@
             //                     |      |      |      |        |  |       |      |       |       |
 
             bindings = <
-&to 0           &bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2   &bt BT_SEL 3   &bt BT_SEL 4                   &none  &none  &none  &none  &none  &studio_unlock
-&bt BT_CLR_ALL  &bt BT_DISC 0  &bt BT_DISC 1  &bt BT_DISC 2  &bt BT_DISC 3  &bt BT_DISC 4                  &none  &none  &none  &none  &none  &none
+&bt BT_CLR_ALL  &bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2   &bt BT_SEL 3   &bt BT_SEL 4                   &none  &none  &none  &none  &none  &studio_unlock
+&bt BT_CLR      &bt BT_DISC 0  &bt BT_DISC 1  &bt BT_DISC 2  &bt BT_DISC 3  &bt BT_DISC 4                  &none  &none  &none  &none  &none  &none
 &none           &none          &none          &none          &none          &none                          &none  &none  &none  &none  &none  &none
 &none           &none          &none          &none          &none          &none          &none    &to 0  &none  &none  &none  &none  &none  &none
                                               &none          &none          &none          &none    &none  &none  &none  &none
