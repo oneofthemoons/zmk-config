@@ -10,6 +10,26 @@
 #include <dt-bindings/zmk/pointing.h>
 
 / {
+
+};
+
+/ {
+    behaviors {
+        // Настройка скорости движения курсора
+        mmv {
+            acceleration-exponent = <1>;      // 1 — линейно, 2 — быстрее ускорение
+            time-to-max-speed-ms = <500>;    // Время до макс. скорости
+            delay-ms = <0>;                   
+        };
+
+        // Настройка плавности и скорости скролла
+        msc {
+            acceleration-exponent = <1>;      // Ускорение прокрутки
+            time-to-max-speed-ms = <300>;    // Как быстро разгонится скролл
+            delay-ms = <0>;                   
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
