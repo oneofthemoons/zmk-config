@@ -24,10 +24,22 @@
 
         // Настройка плавности и скорости скролла
         msc {
-            acceleration-exponent = <1>;      // Ускорение прокрутки
-            time-to-max-speed-ms = <300>;    // Как быстро разгонится скролл
-            delay-ms = <0>;                   
+            acceleration-exponent = <0>;
+            time-to-max-speed-ms = <0>;
+            delay-ms = <0>;
         };
+        sk_up: sk_up {
+            compatible = "zmk,behavior-scroll-wheel";
+            #binding-cells = <0>;
+            wheel-speed = <50>; 
+        };
+        sk_dn: sk_dn {
+            compatible = "zmk,behavior-scroll-wheel";
+            #binding-cells = <0>;
+            wheel-speed = <50>;
+        };
+    };
+
     };
 
     keymap {
@@ -60,9 +72,9 @@
 
             bindings = <
 &kp F1          &kp F2  &kp F3  &kp F4          &kp F5          &kp F6                                 &kp F7          &kp F8              &kp F9            &kp F10              &kp F11        &kp F12
-&kp TAB         &none   &none   &msc SCRL_UP    &mmv MOVE_UP    &mkp RCLK                              &kp LC(LEFT)    &kp LC(DOWN_ARROW)  &kp LC(UP_ARROW)  &kp LC(RIGHT_ARROW)  &kp PAGE_UP    &kp PRINTSCREEN
+&kp TAB         &none   &none   &sk_up    &mmv MOVE_UP    &mkp RCLK                              &kp LC(LEFT)    &kp LC(DOWN_ARROW)  &kp LC(UP_ARROW)  &kp LC(RIGHT_ARROW)  &kp PAGE_UP    &kp PRINTSCREEN
 &kp LGUI        &none   &none   &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT                        &kp LEFT_ARROW  &kp DOWN_ARROW      &kp UP_ARROW      &kp RIGHT            &mt HOME END   &kp INSERT
-&kp LEFT_SHIFT  &none   &none   &msc SCRL_DOWN  &mmv MOVE_DOWN  &mkp MCLK        &to 1       &sl 2     &kp LA(LEFT)    &kp LA(DOWN_ARROW)  &kp LA(UP_ARROW)  &kp LA(RIGHT_ARROW)  &kp PAGE_DOWN  &kp LEFT_SHIFT
+&kp LEFT_SHIFT  &none   &none   &sk_dn  &mmv MOVE_DOWN  &mkp MCLK        &to 1       &sl 2     &kp LA(LEFT)    &kp LA(DOWN_ARROW)  &kp LA(UP_ARROW)  &kp LA(RIGHT_ARROW)  &kp PAGE_DOWN  &kp LEFT_SHIFT
                                 &kp LCTRL       &kp LALT        &none            &mkp MB4    &mkp MB5  &none           &kp DELETE          &kp BACKSPACE
             >;
         };
