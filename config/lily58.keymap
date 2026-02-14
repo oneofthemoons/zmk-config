@@ -4,23 +4,26 @@
  * SPDX-License-Identifier: MIT
  */
 
+#define ZMK_POINTING_DEFAULT_MOVE_VAL 800  // default: 600
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 200 // default: 10
+
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
-#define ZMK_POINTING_DEFAULT_MOVE_VAL 800  // default: 600
-#define ZMK_POINTING_DEFAULT_SCRL_VAL 200 // default: 10
 #include <dt-bindings/zmk/pointing.h>
 
 / {
     behaviors {
         // Настройка скорости движения курсора
+
         mmv {
             acceleration-exponent = <1>;      // 1 — линейно, 2 — быстрее ускорение
             time-to-max-speed-ms = <500>;    // Время до макс. скорости
-            delay-ms = <0>;                   
+            delay-ms = <0>;
         };
 
         // Настройка плавности и скорости скролла
+
         msc {
             acceleration-exponent = <1>;
             time-to-max-speed-ms = <300>;
@@ -60,8 +63,8 @@
 &kp F1          &kp F2  &kp F3  &kp F4          &kp F5          &kp F6                                 &kp F7          &kp F8              &kp F9            &kp F10              &kp F11        &kp F12
 &kp TAB         &none   &none   &msc SCRL_UP    &mmv MOVE_UP    &mkp RCLK                              &kp LC(LEFT)    &kp LC(DOWN_ARROW)  &kp LC(UP_ARROW)  &kp LC(RIGHT_ARROW)  &kp PAGE_UP    &kp PRINTSCREEN
 &kp LGUI        &none   &none   &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT                        &kp LEFT_ARROW  &kp DOWN_ARROW      &kp UP_ARROW      &kp RIGHT            &mt HOME END   &kp INSERT
-&kp LEFT_SHIFT  &none   &none   &msc SCRL_DOWN  &mmv MOVE_DOWN  &mkp MCLK        &to 1       &sl 2     &kp LA(LEFT)    &kp LA(DOWN_ARROW)  &kp LA(UP_ARROW)  &kp LA(RIGHT_ARROW)  &kp PAGE_DOWN  &kp LEFT_SHIFT
-                                &kp LCTRL       &kp LALT        &mkp MB4         &kp SPACE   &kp RET   &mkp MB5        &kp DELETE          &kp BACKSPACE
+&kp LEFT_SHIFT  &none   &none   &msc SCRL_DOWN  &mmv MOVE_DOWN  &mkp MCLK        &to 1        &sl 2    &kp LA(LEFT)    &kp LA(DOWN_ARROW)  &kp LA(UP_ARROW)  &kp LA(RIGHT_ARROW)  &kp PAGE_DOWN  &kp LEFT_SHIFT
+                                &kp LCTRL       &kp LALT        &mkp MB4         &kp SPACE    &kp RET  &mkp MB5        &kp DELETE          &kp BACKSPACE
             >;
         };
 
@@ -75,7 +78,7 @@
 
             bindings = <
 &bt BT_CLR_ALL  &bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2   &bt BT_SEL 3   &bt BT_SEL 4                   &none  &none  &none  &none  &none  &studio_unlock
-&bt BT_CLR      &none          &none          &none          &none          &none                          &none  &none  &none  &none  &none  &none
+&bt BT_CLR      &bt BT_DISC 0  &bt BT_DISC 1  &bt BT_DISC 2  &bt BT_DISC 3  &bt BT_DISC 4                  &none  &none  &none  &none  &none  &none
 &none           &none          &none          &none          &none          &none                          &none  &none  &none  &none  &none  &none
 &none           &none          &none          &none          &none          &none          &none    &to 0  &none  &none  &none  &none  &none  &none
                                               &none          &none          &none          &none    &none  &none  &none  &none
