@@ -61,7 +61,7 @@
 &kp TAB         &none   &none   &msc SCRL_UP    &mmv MOVE_UP    &mkp RCLK                              &kp LC(LEFT)    &kp LC(DOWN_ARROW)  &kp LC(UP_ARROW)  &kp LC(RIGHT_ARROW)  &kp PAGE_UP    &kp PRINTSCREEN
 &kp LGUI        &none   &none   &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT                        &kp LEFT_ARROW  &kp DOWN_ARROW      &kp UP_ARROW      &kp RIGHT            &mt HOME END   &kp INSERT
 &kp LEFT_SHIFT  &none   &none   &msc SCRL_DOWN  &mmv MOVE_DOWN  &mkp MCLK        &to 1       &sl 2     &kp LA(LEFT)    &kp LA(DOWN_ARROW)  &kp LA(UP_ARROW)  &kp LA(RIGHT_ARROW)  &kp PAGE_DOWN  &kp LEFT_SHIFT
-                                &kp LCTRL       &kp LALT        &none            &mkp MB4    &mkp MB5  &none           &kp DELETE          &kp BACKSPACE
+                                &kp LCTRL       &kp LALT        &mkp MB4         &kp SPACE   &kp RET   &mkp MB5        &kp DELETE          &kp BACKSPACE
             >;
         };
 
@@ -75,7 +75,7 @@
 
             bindings = <
 &bt BT_CLR_ALL  &bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2   &bt BT_SEL 3   &bt BT_SEL 4                   &none  &none  &none  &none  &none  &studio_unlock
-&bt BT_CLR      &bt BT_DISC 0  &bt BT_DISC 1  &bt BT_DISC 2  &bt BT_DISC 3  &bt BT_DISC 4                  &none  &none  &none  &none  &none  &none
+&bt BT_CLR      &none          &none          &none          &none          &none                          &none  &none  &none  &none  &none  &none
 &none           &none          &none          &none          &none          &none                          &none  &none  &none  &none  &none  &none
 &none           &none          &none          &none          &none          &none          &none    &to 0  &none  &none  &none  &none  &none  &none
                                               &none          &none          &none          &none    &none  &none  &none  &none
